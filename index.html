@@ -13,19 +13,19 @@
       </head>
           <body>
                   <div id="navbar">
-         <button  id="1" class="websitelink">Gn-Math</button>
-        <button id="2" class="websitelink" >Fern</button>
-         <button id="3" class="websitelink">Dogeub</button>
-        <button id="4" class="websitelink">Overcloaked</button>
-        <button id="5" class="websitelink">Space</button>
-        <button id="6" class="websitelink">TGLSC</button>
-        <button id="7" class="websitelink">Vapor</button>
-        <button id="8" class="websitelink">Lucide</button>
-        <button id="9" class="websitelink">Relic</button>
+         <button  id="0" class="websitelink"></button>
+        <button id="1" class="websitelink" ></button>
+         <button id="2" class="websitelink"></button>
+        <button id="3" class="websitelink"></button>
+        <button id="4" class="websitelink"></button>
+        <button id="5" class="websitelink"></button>
+        <button id="6" class="websitelink"></button>
+        <button id="7" class="websitelink"></button>
+        <button id="8" class="websitelink"></button>
         <button id="ads" popovertarget="adspop">No Ads</button>
         <button id="info" popovertarget="infopop">Info</button>
         <button id="cloak" popovertarget="cloaking">Cloak</button>
-          <button id="fullscreen"><img src="https://raw.githubusercontent.com/LeviC-Dev/website/main/fullscreen.png"></img></button>
+          <button id="fullscreen"><img src="https://raw.githubusercontent.com/UnblockingHub/UBHub/refs/heads/main/fullscreen.png"></img></button>
       </div>
                  <div id="adspop" popover triggers="click blur">
         <h1>Get rid of ads!</h1>
@@ -107,7 +107,7 @@
         <p>If you have content on this page and would like it removed please contact me at UnblockingHub@proton.me</p>
           <button id="infoClose" onclick="document.getElementById('infopop').hidePopover()">Close</button>
     </div>
-        <iframe  id="website" src="https://glseries.net/" tabindex="0" allow="pointer-lock; keyboard; focus-without-user-activation"
+        <iframe  id="website" src="" tabindex="0" allow="pointer-lock; keyboard; focus-without-user-activation"
         sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation allow-downloads allow-storage-access-by-user-activation" allowfullscreen>Your does not support iframes. Please use a different browser.</iframe>
    <p>Copyright &copy 2026. All rights reserved</p>
  <script>
@@ -116,41 +116,23 @@
 
 //iframe buttons
 document.addEventListener("DOMContentLoaded", () => {
+    const defaultLink = 'Dogeub';
     const website = document.getElementById("website");
-    const links = {
-        "Gn-Math": "https://jujgb.b-cdn.net/",
-        "Fern": "https://api.cacmath.org/",
-        "Dogeub": "https://storage.googleapis.com/dogeub/index.html#/",
-        "Overcloaked": "https://ghfgnbv.b-cdn.net/",
-        "Space": "https://asdfsdffe.b-cdn.net/",
-        "TGLSC": "https://glseries.net/",
-        "Vapor": "https://ujnbvkmjh.b-cdn.net/",
-        "Lucide": "https://unpkg.com/browselucide@1.0.0/logo.svg#/",
-        "Relic": "https://clever.com.hal.se/"
-    };
-
-    const buttonMap = {
-        "1": "Gn-Math",
-        "2": "Fern",
-        "3": "Dogeub",
-        "4": "Overcloaked",
-        "5": "Space",
-        "6": "TGLSC",
-        "7": "Vapor",
-        "8": "Lucide",
-        "9": "Relic"
-    };
-
-    if (!website) return;
-
-    Object.entries(buttonMap).forEach(([id, key]) => {
-        const button = document.getElementById(id);
-        if (button) {
-            button.addEventListener("click", () => {
-                website.src = links[key];
+    async function FetchLinks() {
+    const response = await fetch("https://raw.githubusercontent.com/UnblockingHub/UBHub/refs/heads/main/links.json");
+    const links = await response.json()
+    return links;
+    }
+    FetchLinks().then(links => {
+        let sites = Object.keys(links);
+        website.src = links[defaultLink];
+        sites.forEach((site, index) => {
+            document.getElementById(index).textContent = site;
+            document.getElementById(index).addEventListener("click", function() {
+                website.src = links[site];
             });
-        }
-    });
+        });
+    })
 });
 
 
