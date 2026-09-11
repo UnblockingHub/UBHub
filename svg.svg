@@ -1,23 +1,56 @@
-<svg width="100%" height="100%" xmlns="http://w3.org">
+<?xml-stylesheet type="text/css" href="data:text/css,.jsDelivr-fix{font-family:sans-serif;}"?>
+<svg width="100%" height="100%" viewBox="0 0 1920 1080" xmlns="http://w3.org">
   
-  <!-- The HTML Container -->
+  <!-- The foreignObject acts as your viewport window for the website -->
   <foreignObject x="0" y="0" width="100%" height="100%">
-    <head>
-        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
-    </head>
-    <script>
-    let htmlText = null;
-    async function uh() {
-    const response = await fetch('https://raw.githubusercontent.com/UnblockingHub/UBHub/main/index.html');
-    htmlText = await response.text();
-    document.open();
-    document.write(htmlText);
-    document.close();
-    };
-    uh();
-    </script>
+    <!-- 1. The required XHTML container where the page content will be injected -->
+    <div xmlns="http://w3.org" id="webpage-root" style="width:100%; height:100%;">
+      <p style="font-family:sans-serif; color:#666; padding:20px;">Loading application viewport...</p>
+    </div>
   </foreignObject>
 
+  <!-- 2. Strict XML-compliant Script Element -->
+  <script type="text/javascript">
+    // <![CDATA[
+    async function loadWebpage() {
+      const rootElement = document.getElementById('webpage-root');
+      const targetUrl = 'https://raw.githubusercontent.com/UnblockingHub/UBHub/main/index.html';
+      
+      try {
+        const response = await fetch(targetUrl);
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        
+        const htmlText = await response.text();
+        
+        // Convert the fetched raw text strings securely into HTML Nodes
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlText, 'text/html');
+        
+        // Clear out the "Loading..." placeholder text safely
+        rootElement.innerHTML = '';
+        
+        // Move over scripts, links, styles, and body elements from the fetched page
+        if (doc.head) {
+          Array.from(doc.head.childNodes).forEach(node => {
+            rootElement.appendChild(document.importNode(node, true));
+          });
+        }
+        if (doc.body) {
+          Array.from(doc.body.childNodes).forEach(node => {
+            rootElement.appendChild(document.importNode(node, true));
+          });
+        }
+        
+      } catch (error) {
+        rootElement.innerHTML = `<div style="color:red; font-family:sans-serif; padding:20px;">
+          <h3>Failed to load application</h3>
+          <p>${error.message}</p>
+        </div>`;
+      }
+    }
+
+    // Initialize the application after the SVG DOM sets up
+    document.addEventListener("DOMContentLoaded", loadWebpage);
+    // ]]>
+  </script>
 </svg>
