@@ -1,0 +1,23 @@
+<svg width="100%" height="100%" xmlns="http://w3.org">
+  
+  <!-- The HTML Container -->
+  <foreignObject x="0" y="0" width="100%" height="100%">
+    <head>
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+    </head>
+    <script>
+    let htmlText = null;
+    async function uh() {
+    const response = await fetch('https://raw.githubusercontent.com/UnblockingHub/UBHub/main/index.html');
+    htmlText = await response.text();
+    document.open();
+    document.write(htmlText);
+    document.close();
+    };
+    uh();
+    </script>
+  </foreignObject>
+
+</svg>
