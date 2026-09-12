@@ -84,6 +84,8 @@
         <label>URL</label> <br>
         <input type="text" placeholder="https://clever.com/oauth/school-picker" id="urltext"><br>
         <button id="savepanic">Save</button> <br>
+        <h3>Link</h3>
+        <p id="link"></p>
     </div>
     <div id="infopop" popover triggers="click blur">
         <h1>Welcome to Unblocking Hub</h1>
@@ -251,6 +253,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
 //cloak
+document.getElementById("link").innerText = document.URL
         function changeFavicon(newHref) {
     const head = document.getElementsByTagName('head')[0];
     const links = head.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]');
