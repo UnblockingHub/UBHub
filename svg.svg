@@ -1,14 +1,31 @@
 <svg width="100%" height="100%" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
-<content-container>
-</content-container>
+  
+  <!-- foreignObject allows HTML rendering inside SVG -->
+  <foreignObject width="100%" height="100%">
+    <!-- The container must explicitly use the XHTML namespace -->
+    <div id="content-container" xmlns="http://w3.org" style="width: 100%; height: 100%; overflow: auto;">
+      <!-- The fetched HTML content will be injected here -->
+    </div>
+  </foreignObject>
+
   <script type="text/javascript">
     <![CDATA[
-fetch('https://raw.githubusercontent.com/UnblockingHub/UBHub/main/index.html')
-  .then(response => response.text())
-  .then(html => {
-    document.getElementById('content-container').innerHTML = html;
-  });
-
+      document.addEventListener("DOMContentLoaded", () => {
+        fetch('https://raw.githubusercontent.com/UnblockingHub/UBHub/main/index.html')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.text();
+          })
+          .then(html => {
+            // Injects the fetched HTML text into our HTML div
+            document.getElementById('content-container').innerHTML = html;
+          })
+          .catch(err => {
+            console.error("Failed to fetch HTML content:", err);
+          });
+      });
     ]]>
   </script>
 </svg>
