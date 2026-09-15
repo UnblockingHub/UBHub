@@ -1,47 +1,14 @@
-<?xml-stylesheet type="text/css" href="data:text/css,.jsDelivr-fix{font-family:sans-serif;}"?>
-<svg width="100%" height="100%" viewBox="0 0 1920 1080" xmlns="http://w3.org">
-  
-  <style type="text/css">
-    script { display: none !important; }
-    #webpage-root { width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden; }
-  </style>
-
-  <foreignObject x="0" y="0" width="100%" height="100%">
-    <div xmlns="http://w3.org" id="webpage-root">
-      <p style="font-family: sans-serif; color: #555; padding: 20px;">Setting up environment...</p>
-    </div>
-  </foreignObject>
-
+<svg width="100%" height="100%" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+<content-container>
+</content-container>
   <script type="text/javascript">
-    async function startApp() {
-      const root = document.getElementById("webpage-root");
-      if (!root) return;
+    <![CDATA[
+fetch('https://raw.githubusercontent.com/UnblockingHub/UBHub/main/index.html')
+  .then(response => response.text())
+  .then(html => {
+    document.getElementById('content-container').innerHTML = html;
+  });
 
-      const url = "https://githubusercontent.com";
-      
-      try {
-        const res = await fetch(url);
-        if (!res.ok) throw new Error("Network response failed");
-        const html = await res.text();
-        
-        // Build the isolated XHTML frame context cleanly
-        const frame = document.createElementNS("http://w3.org", "iframe");
-        frame.style.width = "100%";
-        frame.style.height = "100%";
-        frame.style.border = "none";
-        
-        root.innerHTML = "";
-        root.appendChild(frame);
-        
-        // Populating the frame safely via srcdoc eliminates any XML string translation bugs
-        frame.srcdoc = html;
-        
-      } catch (err) {
-        root.innerHTML = "<p style='color:red; font-family:sans-serif; padding:20px;'>Initialization Error: " + err.message + "</p>";
-      }
-    }
-
-    // Safely hook directly into the standard animation loop for immediate engine execution
-    requestAnimationFrame(startApp);
+    ]]>
   </script>
 </svg>
