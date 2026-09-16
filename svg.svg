@@ -4,8 +4,8 @@
       <iframe
         src="https://esm.sh/gh/unblockinghub/ubhub/index.html"
         style="border:0;width:100%;height:100vh;display:block;background:#0b1418"
-        allow="autoplay; fullscreen; gamepad; clipboard-read; clipboard-write; microphone; camera"
-        title="deserted education and learning"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-downloads allow-top-navigation"
+        title="education and learning"
       ></iframe>
     </body>
   </foreignObject>
