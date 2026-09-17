@@ -3,6 +3,7 @@ const CACHE_NAME = 'v1_cache';
 const ASSETS_TO_CACHE = [
   'https://raw.githubusercontent.com/unblockinghub/ubhub/main/',
   'https://raw.githubusercontent.com/unblockinghub/ubhub/main/index.html',
+  'https://raw.githubusercontent.com/unblockinghub/ubhub/main/manifest.json',
 ];
 
 // 1. Install Event: Triggered when the browser first sees the script.
