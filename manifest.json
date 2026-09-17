@@ -3,12 +3,12 @@
   "name": "Unblocking Hub",
   "icons": [
     {
-      "src": "https://raw.githubusercontent.com/unblockinghub/ubhub/pwa192.png",
+      "src": "https://raw.githubusercontent.com/unblockinghub/ubhub/main/pwa192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "https://raw.githubusercontent.com/unblockinghub/ubhub/pwa512.png",
+      "src": "https://raw.githubusercontent.com/unblockinghub/ubhub/main/pwa512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
