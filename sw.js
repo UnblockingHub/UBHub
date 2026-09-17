@@ -1,10 +1,8 @@
 // sw.js (Service Worker file)
 const CACHE_NAME = 'v1_cache';
 const ASSETS_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/app.js'
+  'https://raw.githubusercontent.com/unblockinghub/ubhub/main/',
+  'https://raw.githubusercontent.com/unblockinghub/ubhub/main/index.html',
 ];
 
 // 1. Install Event: Triggered when the browser first sees the script.
