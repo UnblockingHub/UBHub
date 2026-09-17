@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-          <link rel="manifest" href="https://raw.githubusercontent.com/unblockinghub/ubhub/main/manifest.json">
+          <link rel="manifest" href="https://raw.githubusercontent.com/UnblockingHub/UBHub/main/manifest.json">
           <link id="favicon" rel="icon" href="default-favicon.ico" type="image/png">
         <meta name="referrer" content="no-referrer-when-downgrade" />
         <meta name="bfd407e9c9e292075f69876c4b0ba12da6d5f42b" content="bfd407e9c9e292075f69876c4b0ba12da6d5f42b" />
@@ -114,7 +114,13 @@
         sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation allow-downloads allow-storage-access-by-user-activation" allowfullscreen>Your does not support iframes. Please use a different browser.</iframe>
    <p>Copyright &copy 2026. All rights reserved</p>
  <script>
-
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('https://raw.githubusercontent.com/unblockinghub/ubhub/main/sw.js')
+          .then(reg => console.log('PWA Service Worker registered!', reg.scope))
+          .catch(err => console.error('Registration failed:', err));
+      });
+    }
 
 
 //iframe buttons
