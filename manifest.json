@@ -14,7 +14,7 @@
       "purpose": "any maskable"
     }
   ],
-  "start_url": "/index.html",
+  "start_url": "https://raw.githubusercontent.com/unblockinghub/ubhub/main/index.html",
   "background_color": "#ffffff",
   "theme_color": "#007bff",
   "display": "standalone",
