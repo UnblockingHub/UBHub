@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <title>UBHub</title>
         <meta name="description" content="Unblocking Hub is you ultimate destination for unblocking resources. It uses many proxy and game sites in one.">
-          <link rel="manifest" href="https://esm.sh/gh/unblockinghub/ubhub/manifest.json">
           <link id="favicon" rel="icon" href="https://esm.sh/gh/unblockinghub/ubhub/pwa512.png" type="image/png">
         <meta name="referrer" content="no-referrer-when-downgrade" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -115,12 +114,79 @@
         sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation allow-downloads allow-storage-access-by-user-activation" allowfullscreen>Your does not support iframes. Please use a different browser.</iframe>
    <p>Copyright &copy 2026. All rights reserved</p>
  <script>
+    const manifest = {
+      "name": "Unblocking Hub",
+      "short_name": "UBHub",
+      "start_url": window.location.href, 
+      "display": "standalone",
+      "background_color": "#14147E",
+      "theme_color": "#14147E",
+      "icons": [
+        {
+
+          "src": "https://esm.sh/gh/unblockinghub/ubhub@4c753fb/pwa512.png",
+          "sizes": "512x512",
+          "type": "image/png"
+        }
+      ]
+    };
+
+    const manifestStr = JSON.stringify(manifest);
+    const manifestBlob = new Blob([manifestStr], { type: 'application/json' });
+    const manifestURL = URL.createObjectURL(manifestBlob);
+    
+    const flavorTag = document.createElement('link');
+    flavorTag.rel = 'manifest';
+    flavorTag.href = manifestURL;
+    document.head.appendChild(flavorTag);
+
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('https://esm.sh/gh/unblockinghub/ubhub/sw.js')
-          .then(reg => console.log('PWA Service Worker registered!', reg.scope))
-          .catch(err => console.error('Registration failed:', err));
-      });
+      const swCode = `
+        const CACHE_NAME = 'single-file-v2';
+        
+        self.addEventListener('install', event => {
+          self.skipWaiting();
+        });
+
+        self.addEventListener('activate', event => {
+          event.waitUntil(self.clients.claim());
+        });
+
+        // CACHE-FIRST / NETWORK FALLBACK STRATEGY
+        self.addEventListener('fetch', event => {
+          event.respondWith(
+            caches.match(event.request).then(cachedResponse => {
+              // Return from cache if we have it, otherwise fetch from network
+              if (cachedResponse) {
+                return cachedResponse;
+              }
+
+              return fetch(event.request).then(response => {
+                // Don't cache if it's not a valid success response
+                if (!response || response.status !== 200 || response.type !== 'basic') {
+                  return response;
+                }
+
+                // Clone response to store it in cache while returning the original
+                const responseToCache = response.clone();
+                caches.open(CACHE_NAME).then(cache => {
+                  cache.put(event.request, responseToCache);
+                });
+
+                return response;
+              });
+            })
+          );
+        });
+      `;
+
+      const swBlob = new Blob([swCode], { type: 'text/javascript' });
+      const swURL = URL.createObjectURL(swBlob);
+
+      // Register the Service Worker string blob directly
+      navigator.serviceWorker.register(swURL, { scope: './' })
+        .then(() => console.log('Inline Service Worker successfully registered!'))
+        .catch(err => console.error('Worker registration failed:', err));
     }
 
 
