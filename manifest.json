@@ -1,0 +1,22 @@
+{
+  "short_name": "UBHub",
+  "name": "Unblocking Hub",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/unblockinghub/ubhub/pwa192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/unblockinghub/ubhub/pwa512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/index.html",
+  "background_color": "#ffffff",
+  "theme_color": "#007bff",
+  "display": "standalone",
+  "orientation": "portrait"
+}
