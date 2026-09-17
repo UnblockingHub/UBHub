@@ -2,10 +2,11 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-          <link rel="manifest" href="https://raw.githubusercontent.com/UnblockingHub/UBHub/main/manifest.json">
-          <link id="favicon" rel="icon" href="default-favicon.ico" type="image/png">
+        <title>UBHub</title>
+        <meta name="description" content="Unblocking Hub is you ultimate destination for unblocking resources. It uses many proxy and game sites in one.">
+          <link rel="manifest" href="https://esm.sh/gh/unblockinghub/ubhub/manifest.json">
+          <link id="favicon" rel="icon" href="https://esm.sh/gh/unblockinghub/ubhub/pwa512.png" type="image/png">
         <meta name="referrer" content="no-referrer-when-downgrade" />
-        <meta name="bfd407e9c9e292075f69876c4b0ba12da6d5f42b" content="bfd407e9c9e292075f69876c4b0ba12da6d5f42b" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="viewport" content="height=device-height, initial-scale=1.0">
         <meta http-equiv="Expires" content="0">
@@ -14,19 +15,19 @@
       </head>
           <body>
                   <div id="navbar">
-         <button  id="0" class="websitelink"></button>
-        <button id="1" class="websitelink" ></button>
-         <button id="2" class="websitelink"></button>
-        <button id="3" class="websitelink"></button>
-        <button id="4" class="websitelink"></button>
-        <button id="5" class="websitelink"></button>
-        <button id="6" class="websitelink"></button>
-        <button id="7" class="websitelink"></button>
-        <button id="8" class="websitelink"></button>
-        <button id="ads" popovertarget="adspop"><img src="https://raw.githubusercontent.com/UnblockingHub/UBHub/refs/heads/main/noads.png"></img></button>
+         <button  id="0" class="websitelink">Site1</button>
+        <button id="1" class="websitelink">Site2</button>
+         <button id="2" class="websitelink">Site3</button>
+        <button id="3" class="websitelink">Site4</button>
+        <button id="4" class="websitelink">Site5</button>
+        <button id="5" class="websitelink">Site6</button>
+        <button id="6" class="websitelink">Site7</button>
+        <button id="7" class="websitelink">Site8</button>
+        <button id="8" class="websitelink">Site9</button>
+        <button aria-label="No Ads" id="ads" popovertarget="adspop"><img alt="No Ads Icon" src="https://esm.sh/gh/unblockinghub/ubhub/noads.png"></img></button>
         <button id="info" popovertarget="infopop">Info</button>
         <button id="cloak" popovertarget="cloaking">Cloak</button>
-          <button id="fullscreen"><img src="https://raw.githubusercontent.com/UnblockingHub/UBHub/refs/heads/main/fullscreen.png"></img></button>
+          <button aria-label="Fullscreen" id="fullscreen"><img alt="Fullscreen Icon" src="https://esm.sh/gh/unblockinghub/ubhub/fullscreen.png"></img></button>
       </div>
                  <div id="adspop" popover triggers="click blur">
         <h1>Get rid of ads!</h1>
@@ -68,14 +69,14 @@
         <input type="text" id="title"> <br>
         <label>Tab Icon</label> <br>
         <select name="options" id="icon">
-  <option value="https://raw.githubusercontent.com/UnblockingHub/UBHub/refs/heads/main/canvas.png">Canvas</option>
-  <option value="https://raw.githubusercontent.com/UnblockingHub/UBHub/refs/heads/main/clever.png">Clever</option>
-  <option value="https://raw.githubusercontent.com/UnblockingHub/UBHub/refs/heads/main/gmail.png">Gmail</option>
-    <option value="https://raw.githubusercontent.com/UnblockingHub/UBHub/refs/heads/main/gdrive.png">Google Drive</option>
-      <option value="https://raw.githubusercontent.com/UnblockingHub/UBHub/refs/heads/main/gclassroom.png">Google Classroom</option>
-    <option value="https://raw.githubusercontent.com/UnblockingHub/UBHub/refs/heads/main/amplify.png">Amplify</option>
-    <option value="https://raw.githubusercontent.com/UnblockingHub/UBHub/refs/heads/main/ixl.png">IXL</option>
-    <option value="https://raw.githubusercontent.com/UnblockingHub/UBHub/refs/heads/main/edmentum.png">Edmentum</option>
+  <option value="https://esm.sh/gh/unblockinghub/ubhub/canvas.png">Canvas</option>
+  <option value="https://esm.sh/gh/unblockinghub/ubhub/clever.png">Clever</option>
+  <option value="https://esm.sh/gh/unblockinghub/ubhub/gmail.png">Gmail</option>
+    <option value="https://esm.sh/gh/unblockinghub/ubhub/gdrive.png">Google Drive</option>
+      <option value="https://esm.sh/gh/unblockinghub/ubhub/gclassroom.png">Google Classroom</option>
+    <option value="https://esm.sh/gh/unblockinghub/ubhub/amplify.png">Amplify</option>
+    <option value="https://esm.sh/gh/unblockinghub/ubhub/ixl.png">IXL</option>
+    <option value="https://esm.sh/gh/unblockinghub/ubhub/edmentum.png">Edmentum</option>
         </select> <br>
             <button id="save">Save</button> <br>
         <button id="aboutBlank">about:blank</button>
@@ -110,13 +111,13 @@
         <p>If you have content on this page and would like it removed please contact me at UnblockingHub@proton.me</p>
           <button id="infoClose" onclick="document.getElementById('infopop').hidePopover()">Close</button>
     </div>
-        <iframe  id="website" src="" tabindex="0" allow="pointer-lock; keyboard; focus-without-user-activation"
+        <iframe  title="website iframe" id="website" src="" tabindex="0" allow="pointer-lock; keyboard; focus-without-user-activation"
         sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation allow-downloads allow-storage-access-by-user-activation" allowfullscreen>Your does not support iframes. Please use a different browser.</iframe>
    <p>Copyright &copy 2026. All rights reserved</p>
  <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('https://raw.githubusercontent.com/unblockinghub/ubhub/main/sw.js')
+        navigator.serviceWorker.register('https://esm.sh/gh/unblockinghub/ubhub/sw.js')
           .then(reg => console.log('PWA Service Worker registered!', reg.scope))
           .catch(err => console.error('Registration failed:', err));
       });
@@ -128,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const defaultLink = 'Dogeub';
     const website = document.getElementById("website");
     async function FetchLinks() {
-    const response = await fetch("https://raw.githubusercontent.com/UnblockingHub/UBHub/refs/heads/main/links.json");
+    const response = await fetch("https://esm.sh/gh/unblockinghub/ubhub/links.json");
     const links = await response.json()
     return links;
     }
